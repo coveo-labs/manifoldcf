@@ -1,5 +1,3 @@
-/* $Id: CoveoConfig.java 988245 2017-12-12 16:39:35Z jfcloutier $ */
-
 /**
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements. See the NOTICE file distributed with
@@ -17,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.apache.manifoldcf.agents.output.coveoconnector;
+package org.apache.manifoldcf.agents.output.coveo;
 
 import org.apache.manifoldcf.core.interfaces.ConfigParams;
 import org.apache.manifoldcf.core.interfaces.IPostParameters;
