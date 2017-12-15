@@ -1,5 +1,3 @@
-/* $Id: CoveoRequestType.java 988245 2017-12-11 16:39:35Z jfcloutier $ */
-
 /**
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements. See the NOTICE file distributed with
@@ -16,9 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.manifoldcf.agents.output.coveoconnector;
+package org.apache.manifoldcf.agents.output.coveo;
 
 public enum CoveoRequestType {
     ADD_OR_UPDATE,
-    DELETE;
+    DELETE
 }
