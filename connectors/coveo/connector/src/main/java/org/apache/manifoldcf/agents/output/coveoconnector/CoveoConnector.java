@@ -1,5 +1,3 @@
-/* $Id: CoveoConnector.java 988245 2017-12-11 16:39:35Z jfcloutier $ */
-
 /**
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements. See the NOTICE file distributed with
@@ -16,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.manifoldcf.agents.output.coveoconnector;
+package org.apache.manifoldcf.agents.output.coveo;
 
 import org.apache.manifoldcf.core.interfaces.*;
 import org.apache.manifoldcf.agents.interfaces.*;
@@ -83,7 +81,7 @@ public class CoveoConnector extends BaseOutputConnector {
 
     /** Set up a session */
     protected void getSession() throws ManifoldCFException, ServiceInterruption {
-        // Nothing to do here
+        // TODO: Have a buffer for when calls are batched
     }
 
     /**
@@ -94,12 +92,6 @@ public class CoveoConnector extends BaseOutputConnector {
             throws ManifoldCFException {
         super.disconnect();
     }
-
-    /*
-    protected void getSession() throws ManifoldCFException, ServiceInterruption {
-        // No session required as it is pushing to a restful api, but... it has to be there anyway
-    }
-    */
 
     /**
      * Test the connection.  Returns a string describing the connection integrity.
@@ -158,6 +150,7 @@ public class CoveoConnector extends BaseOutputConnector {
                                                  IOutputAddActivity activities
     ) throws ManifoldCFException, ServiceInterruption, IOException {
         this.getSession();
+        // TODO: Batch calls, based on the configuration parameter, using the batcher that would be in getSession()
 
         try {
             // Build permissions Access Control Lists
@@ -207,8 +200,9 @@ public class CoveoConnector extends BaseOutputConnector {
             activities.recordActivity(null, INGEST_ACTIVITY, new Long(document.getBinaryLength()), documentURI, "OK", "202 - Success");
 
             return DOCUMENTSTATUS_ACCEPTED;
-        } catch (Exception ex) {
-            activities.recordActivity(null, INGEST_ACTIVITY, new Long(document.getBinaryLength()), documentURI, "ERROR", ex.toString());
+        } catch (Exception e) {
+            // TODO: Improve error handling based on the error code and/or exception
+            activities.recordActivity(null, INGEST_ACTIVITY, new Long(document.getBinaryLength()), documentURI, "ERROR", e.toString());
 
             return DOCUMENTSTATUS_REJECTED;
         }
@@ -227,6 +221,7 @@ public class CoveoConnector extends BaseOutputConnector {
                                IOutputRemoveActivity activities
     ) throws ManifoldCFException, ServiceInterruption {
         this.getSession();
+        // TODO: Batch calls, based on the configuration parameter, using the batcher that would be in getSession()
 
         try {
             CoveoRequest request = new CoveoRequest()
@@ -248,8 +243,9 @@ public class CoveoConnector extends BaseOutputConnector {
             }
 
             activities.recordActivity(null, REMOVE_ACTIVITY, null, documentURI, "OK", null);
-        } catch (Exception ex) {
-            activities.recordActivity(null, REMOVE_ACTIVITY, null, documentURI, "ERROR", ex.toString());
+        } catch (Exception e) {
+            // TODO: Improve error handling based on the error code and/or exception
+            activities.recordActivity(null, REMOVE_ACTIVITY, null, documentURI, "ERROR", e.toString());
         }
 
         activities.recordActivity(null, REMOVE_ACTIVITY, null, documentURI, "OK", null);
@@ -265,6 +261,7 @@ public class CoveoConnector extends BaseOutputConnector {
     @Override
     public void noteJobComplete(IOutputNotifyActivity activities)
             throws ManifoldCFException, ServiceInterruption {
+        // TODO: Once we have a batch mode, clear the outstanding unprocessed batch items from this method
         activities.recordActivity(null, JOB_COMPLETE_ACTIVITY, null, "", "OK", null);
     }
 
