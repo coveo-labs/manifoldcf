@@ -23,7 +23,7 @@
 -->
 <connectors>
   <!-- Add your output connectors here -->
-  <outputconnector name="Coveo" class="org.apache.manifoldcf.agents.output.coveoconnector.CoveoConnector"/>
+  <outputconnector name="Coveo" class="org.apache.manifoldcf.agents.output.coveo.CoveoConnector"/>
   <outputconnector name="Solr" class="org.apache.manifoldcf.agents.output.solr.SolrConnector"/>
   <outputconnector name="Null" class="org.apache.manifoldcf.agents.output.nullconnector.NullConnector"/>
   <outputconnector name="MetaCarta GTS" class="org.apache.manifoldcf.agents.output.gts.GTSConnector"/>
