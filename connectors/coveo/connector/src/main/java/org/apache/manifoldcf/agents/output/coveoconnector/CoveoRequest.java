@@ -1,5 +1,3 @@
-/* $Id: CoveoRequest.java 988245 2017-12-11 16:39:35Z jfcloutier $ */
-
 /**
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements. See the NOTICE file distributed add
@@ -16,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.manifoldcf.agents.output.coveoconnector;
+package org.apache.manifoldcf.agents.output.coveo;
 
 import java.io.*;
 import java.io.IOException;
@@ -140,7 +138,7 @@ public class CoveoRequest {
      * @param config   is the config of the output connector.
      * @return the http response from the Coveo push api call
      */
-    public HttpResponse execute(ConfigParams config) {
+    public HttpResponse execute(ConfigParams config) throws Exception {
         String apiBaseUrl = config.getParameter(ParameterEnum.apibaseurl.name());
         String organizationId = config.getParameter(ParameterEnum.organizationid.name());
         String sourceId = config.getParameter(ParameterEnum.sourceid.name());
@@ -162,7 +160,8 @@ public class CoveoRequest {
      * @param apiKey   is from the ConfigParams of method "execute", it is a valid api key to access Coveo push api
      * @return the http response from the Coveo push api call
      */
-    private HttpResponse executePUT(String apiBaseUrl, String organizationId, String sourceId, String apiKey) {
+    private HttpResponse executePUT(String apiBaseUrl, String organizationId, String sourceId, String apiKey)
+    throws Exception {
         HttpResponse response = null;
 
         try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
@@ -176,8 +175,8 @@ public class CoveoRequest {
             request.setEntity(payload);
 
             response = httpClient.execute(request);
-        } catch (IOException e) {
-            // TODO: handle the exception properly
+        } catch (Exception e) {
+            throw e;
         }
 
         return response;
