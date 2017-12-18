@@ -30,10 +30,10 @@ public class CoveoConfig extends CoveoConfigParams {
      * List of required coveo parameters
      */
     final private static ParameterEnum[] CONFIGURATIONLIST = {
-            ParameterEnum.apibaseurl,
-            ParameterEnum.organizationid,
-            ParameterEnum.sourceid,
-            ParameterEnum.apikey
+            ParameterEnum.API_BASE_URL,
+            ParameterEnum.ORGANIZATION_ID,
+            ParameterEnum.SOURCE_ID,
+            ParameterEnum.API_KEY
     };
 
     /**

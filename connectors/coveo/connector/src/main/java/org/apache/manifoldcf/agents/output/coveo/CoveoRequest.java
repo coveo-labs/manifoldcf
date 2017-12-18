@@ -10,7 +10,7 @@
  * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * addOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
@@ -139,10 +139,10 @@ public class CoveoRequest {
      * @return the http response from the Coveo push api call
      */
     public HttpResponse execute(ConfigParams config) throws Exception {
-        String apiBaseUrl = config.getParameter(ParameterEnum.apibaseurl.name());
-        String organizationId = config.getParameter(ParameterEnum.organizationid.name());
-        String sourceId = config.getParameter(ParameterEnum.sourceid.name());
-        String apiKey = config.getParameter(ParameterEnum.apikey.name());
+        String apiBaseUrl = config.getParameter(ParameterEnum.API_BASE_URL.name());
+        String organizationId = config.getParameter(ParameterEnum.ORGANIZATION_ID.name());
+        String sourceId = config.getParameter(ParameterEnum.SOURCE_ID.name());
+        String apiKey = config.getParameter(ParameterEnum.API_KEY.name());
 
         if (this._requestType == CoveoRequestType.ADD_OR_UPDATE) {
             return this.executePUT(apiBaseUrl, organizationId, sourceId, apiKey);

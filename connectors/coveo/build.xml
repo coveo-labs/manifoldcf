@@ -33,7 +33,7 @@
     <target name="deliver-connector" depends="mcf-connector-build.deliver-connector">
         <antcall target="general-add-output-connector">
             <param name="connector-label" value="Coveo"/>
-            <param name="connector-class" value="org.apache.manifoldcf.agents.output.coveo.CoveoConnector"/>
+            <param name="connector-class" value="org.apache.manifoldcf.agents.output.coveoconnector.CoveoConnector"/>
         </antcall>
     </target>
 

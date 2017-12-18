@@ -5,9 +5,9 @@
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,26 +20,16 @@ package org.apache.manifoldcf.agents.output.coveo;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CoveoConfigParams extends HashMap<ParameterEnum, String> {
-    private static final long serialVersionUID = -140931785772220099L; // TODO: Generate a real serialVersionUID
+/** Parameters constants */
+public enum ParameterEnum {
+    API_BASE_URL("https://push.cloud.coveo.com/v1"),
+    ORGANIZATION_ID("MyOrganizationIdGoesHere"),
+    SOURCE_ID("MySourceIdGoesHere"),
+    API_KEY("xx9999-999-999999-999-99");
 
-    /**
-     * Constructor
-     */
-    protected CoveoConfigParams(ParameterEnum[] params) {
-        super(params.length);
-    }
+    final protected String defaultValue;
 
-    /**
-     * Build the a map based on the params contained in the enum
-     *
-     * @return the map, with default values
-     */
-    final public Map<String, String> buildMap() {
-        Map<String, String> rval = new HashMap<String, String>();
-        for (Map.Entry<ParameterEnum, String> entry : this.entrySet()) {
-            rval.put(entry.getKey().name(), entry.getValue());
-        }
-        return rval;
+    ParameterEnum(String defaultValue) {
+        this.defaultValue = defaultValue;
     }
 }
